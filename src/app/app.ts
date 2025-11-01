@@ -14,7 +14,7 @@ export class App {
 
   // API base and modes. Adjust `apiBase` or query param key if your backend expects a different name.
   private readonly http = inject(HttpClient);
-  protected readonly apiBase = 'https://sp63ictcce.execute-api.us-east-2.amazonaws.com/snapshot';
+  protected readonly apiBase = 'https://wqr3teiic9.execute-api.us-east-2.amazonaws.com/snapshot';
   protected readonly gameModes = ['daily960', 'daily', 'tactics'];
 
   // leaderboards: map gameMode -> players[]
@@ -33,7 +33,7 @@ export class App {
     this.loading.update((l) => ({ ...l, [mode]: true }));
 
     // NOTE: I'm using the query param name `gamemode`. If your API expects a different key change it here.
-    const url = `${this.apiBase}?gamemode=${encodeURIComponent(mode)}`;
+    const url = `${this.apiBase}?game_mode=${encodeURIComponent(mode)}`;
 
     this.http.get<any[]>(url).subscribe({
       next: (data) => {
